@@ -6,5 +6,20 @@
 </head>
 <body>
 <h1>My Recipes!</h1>
+<table th:each="recipe: ${recipes}">
+    <tr>
+        <td colspan="3" th:inline="text"><h2> Recipe with id [[${recipe.id}]]: [[${recipe.description}]] </h2></td>
+    </tr>
+    <tr align="left">
+        <th>Description</th>
+        <th>Amount</th>
+        <th>UOM</th>
+    </tr>
+    <tr th:each="ingredient: ${recipe.ingredients}" >
+        <td th:text="${ingredient.description}">descr</td>
+        <td th:text="${ingredient.amount}">amount</td>
+        <td th:text="${ingredient.uom.description}">uom</td>
+    </tr>
+</table>
 </body>
 </html>

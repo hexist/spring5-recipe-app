@@ -1,6 +1,7 @@
 package guru.springframework.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,8 +15,8 @@ public class Category {
     private Long id;
     private String description;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipes;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories")
+    private Set<Recipe> recipes = new HashSet<>();
 
     public Long getId() {
         return id;
